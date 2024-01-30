@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite de Pruebas API" verbose="1">
+    <test name="Pruebas de API">
+        <classes>
+            <class name="Api.Products" />
+
+            <!-- Agrega más clases de prueba según sea necesario -->
+        </classes>
+    </test>
+</suite>
