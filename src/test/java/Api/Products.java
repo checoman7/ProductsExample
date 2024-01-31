@@ -23,7 +23,7 @@ public class Products extends BaseClass {
     @Test
     public void multipleProducts() throws Exception {
         Response resp = httpRequest.get("/products");
-        TypeReference<List<ProductResponse>> typeReference = new TypeReference<List<ProductResponse>>() {};
+        TypeReference<List<ProductResponse>> typeReference = new TypeReference<>() {};
         List<ProductResponse> listaProductos = SerializationManager.deserializeParamObj(resp.getBody().asString(), typeReference);
 
         listaProductos.forEach(product -> {
