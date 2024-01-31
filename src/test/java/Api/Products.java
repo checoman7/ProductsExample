@@ -13,7 +13,7 @@ public class Products extends BaseClass {
 
     @Test
     public void singleProduct() throws Exception {
-        Response resp = httpRequest.pathParam("id",1).get("/products/{id}").then().statusCode(300).extract().response();
+        Response resp = httpRequest.pathParam("id",1).get("/products/{id}").then().statusCode(200).extract().response();
         ProductResponse respAsObj = SerializationManager.deserialize(resp.getBody().asString(), ProductResponse.class);
 
         System.out.print(respAsObj.getId() + ": ");
