@@ -20,6 +20,9 @@ public class ConfigReader {
     public static String getBaseURI() {
         return properties.getProperty("baseURI");
     }
+    public static String getUsern() {
+        return properties.getProperty("usern");
+    }
 
 
 }

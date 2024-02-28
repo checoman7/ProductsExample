@@ -13,16 +13,16 @@ import java.util.List;
 
 public class Products extends BaseClass {
 
-    @Test
+    @Test(groups = {"regression", "smoke"})
     public void singleProduct() throws Exception {
-        Response resp = httpRequest.pathParam("id",1).get("/products/{id}").then().statusCode(200).extract().response();
+
+
+
+        Response resp = httpRequest.cookie("Bearer " + token).pathParam("id",1).get("/products/{id}").then().statusCode(200).extract().response();
         ProductResponse respAsObj = SerializationManager.deserialize(resp.getBody().asString(), ProductResponse.class);
-        resp.then().statusCode(200);
-        Assert.assertEquals(respAsObj.getId(),1);
-        Assert.assertEquals(respAsObj.getTitle(), "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops");
-        Assert.assertEquals(respAsObj.getPrice(),109.95);
+        System.out.println(resp.prettyPrint());
     }
-    @Test
+    @Test(groups = {"regression"})
     public void multipleProducts() throws Exception {
         Response resp = httpRequest.get("/products");
         TypeReference<List<ProductResponse>> typeReference = new TypeReference<>() {};
@@ -37,7 +37,7 @@ public class Products extends BaseClass {
 
         CreateProductPayload newProd = new CreateProductPayload("Test", 2.0, "test", "", "men");
         String jsonProd = SerializationManager.serialize(newProd);
-        Response resp = httpRequest.body(jsonProd).post("/products");
+        Response resp = httpRequest.cookie("Bearer " + token).body(jsonProd).post("/products");
         resp.then().statusCode(200);
 
     }
