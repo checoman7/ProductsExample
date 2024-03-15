@@ -22,7 +22,7 @@ public class BaseClass {
             RestAssured.baseURI=ConfigReader.getMockedUrl();
             RestAssured.port = 8080;
             httpRequest= RestAssured.given();
-            token = "asdfasdfasfasdf";
+            token = "mockedtoken";
         }
 
         if(!ConfigReader.isMocked()) {
