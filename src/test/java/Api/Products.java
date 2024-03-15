@@ -38,8 +38,6 @@ public class Products extends BaseClass {
         }
 
         Response resp = httpRequest.get("/products");
-        System.out.println(resp.prettyPrint());
-        System.out.println(RestAssured.baseURI);
         TypeReference<List<ProductResponse>> typeReference = new TypeReference<>() {};
         List<ProductResponse> listaProductos = SerializationManager.deserializeParamObj(resp.getBody().asString(), typeReference);
         resp.then().statusCode(200);
