@@ -26,7 +26,7 @@ public class Products extends BaseClass {
         System.out.println(RestAssured.baseURI);
         Response resp = httpRequest.get("/products/1");
         System.out.println(resp.prettyPrint());
-        //ProductResponse respAsObj = SerializationManager.deserialize(resp.getBody().asString(), ProductResponse.class);
+        ProductResponse respAsObj = SerializationManager.deserialize(resp.getBody().asString(), ProductResponse.class);
 
     }
     @Test(groups = {"regression"})
