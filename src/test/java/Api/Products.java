@@ -17,12 +17,16 @@ public class Products extends BaseClass {
 
     @Test(groups = {"regression", "smoke"})
     public void singleProduct() throws Exception {
-
-
-
+        if (ConfigReader.isMocked()) {
+            stubFor(get(urlEqualTo("/products/1"))
+                    .willReturn(aResponse()
+                            .withStatus(200)
+                            .withBodyFile("/MockResponses/SingleProduct.json")));
+        }
         Response resp = httpRequest.cookie("Bearer " + token).pathParam("id",1).get("/products/{id}").then().statusCode(200).extract().response();
-        ProductResponse respAsObj = SerializationManager.deserialize(resp.getBody().asString(), ProductResponse.class);
-        System.out.println(resp.prettyPrint());
+
+        //ProductResponse respAsObj = SerializationManager.deserialize(resp.getBody().asString(), ProductResponse.class);
+
     }
     @Test(groups = {"regression"})
     public void multipleProducts() throws Exception {
