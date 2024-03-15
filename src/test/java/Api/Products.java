@@ -3,13 +3,15 @@ package Api;
 import SerializationPayloads.CreateProductPayload;
 import SerializationPayloads.ProductResponse;
 import Util.BaseClass;
+import Util.ConfigReader;
 import Util.SerializationManager;
 import com.fasterxml.jackson.core.type.TypeReference;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.util.List;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 public class Products extends BaseClass {
 
@@ -24,7 +26,16 @@ public class Products extends BaseClass {
     }
     @Test(groups = {"regression"})
     public void multipleProducts() throws Exception {
+        if (ConfigReader.isMocked()) {
+            stubFor(get(urlEqualTo("/products"))
+                    .willReturn(aResponse()
+                            .withStatus(200)
+                            .withBodyFile("MockResponses/MultipleProducts.json")));
+        }
+
         Response resp = httpRequest.get("/products");
+        System.out.println(resp.prettyPrint());
+        System.out.println(RestAssured.baseURI);
         TypeReference<List<ProductResponse>> typeReference = new TypeReference<>() {};
         List<ProductResponse> listaProductos = SerializationManager.deserializeParamObj(resp.getBody().asString(), typeReference);
         resp.then().statusCode(200);

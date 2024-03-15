@@ -52,6 +52,13 @@
       <version>4.1.2</version> <!-- O la versión más reciente -->
     </dependency>
 
+    <dependency>
+      <groupId>com.github.tomakehurst</groupId>
+      <artifactId>wiremock-jre8</artifactId>
+      <version>2.32.0</version> <!-- O la versión más reciente -->
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>

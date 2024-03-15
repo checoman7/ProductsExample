@@ -20,8 +20,12 @@ public class ConfigReader {
     public static String getBaseURI() {
         return properties.getProperty("baseURI");
     }
-    public static String getUsern() {
-        return properties.getProperty("usern");
+    public static String getMockedUrl() {
+        return properties.getProperty("mockedURL");
+    }
+
+    public static Boolean isMocked() {
+        return Boolean.parseBoolean(properties.getProperty("isMocked"));
     }
 
 
