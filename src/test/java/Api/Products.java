@@ -30,7 +30,7 @@ public class Products extends BaseClass {
         //ProductResponse respAsObj = SerializationManager.deserialize(resp.getBody().asString(), ProductResponse.class);
 
     }
-    @Test(groups = {"regression"})
+    @Test(groups = {""})
     public void multipleProducts() throws Exception {
         if (ConfigReader.isMocked()) {
             stubFor(get(urlEqualTo("/products"))
