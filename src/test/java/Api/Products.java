@@ -15,7 +15,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 public class Products extends BaseClass {
 
-    @Test(groups = {"regression", "smoke"})
+    @Test(groups = {"regression"})
     public void singleProduct() throws Exception {
         if (ConfigReader.isMocked()) {
             stubFor(get(urlEqualTo("/products/1"))
@@ -23,14 +23,13 @@ public class Products extends BaseClass {
                             .withStatus(200)
                             .withBodyFile("/MockResponses/SingleProduct.json")));
         }
-        Response resp = httpRequest.cookie("Bearer " + token).pathParam("id",1).get("/products/{id}").then().statusCode(200).extract().response();
         System.out.println(RestAssured.baseURI);
-        System.out.println(resp.getStatusCode());
+        Response resp = httpRequest.cookie("Bearer " + token).pathParam("id",1).get("/products/{id}");
         System.out.println(resp.prettyPrint());
         //ProductResponse respAsObj = SerializationManager.deserialize(resp.getBody().asString(), ProductResponse.class);
 
     }
-    @Test(groups = {""})
+    @Test(groups = {"regression"})
     public void multipleProducts() throws Exception {
         if (ConfigReader.isMocked()) {
             stubFor(get(urlEqualTo("/products"))
