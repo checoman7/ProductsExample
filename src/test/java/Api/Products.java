@@ -21,7 +21,7 @@ public class Products extends BaseClass {
             stubFor(get(urlEqualTo("/products/1"))
                     .willReturn(aResponse()
                             .withStatus(200)
-                            .withBodyFile("/MockResponses/SingleProduct.json")));
+                            .withBodyFile("MockResponses/SingleProduct.json")));
         }
         System.out.println(RestAssured.baseURI);
         Response resp = httpRequest.get("/products/1");
