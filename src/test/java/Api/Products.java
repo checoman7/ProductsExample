@@ -24,7 +24,7 @@ public class Products extends BaseClass {
                             .withBodyFile("/MockResponses/SingleProduct.json")));
         }
         System.out.println(RestAssured.baseURI);
-        Response resp = httpRequest.cookie("Bearer " + token).pathParam("id",1).get("/products/{id}");
+        Response resp = httpRequest.get("/products/1");
         System.out.println(resp.prettyPrint());
         //ProductResponse respAsObj = SerializationManager.deserialize(resp.getBody().asString(), ProductResponse.class);
 
