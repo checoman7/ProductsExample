@@ -13,7 +13,7 @@ public class BaseClass {
     protected  String token;
     WireMockServer wireMockServer;
 
-    @BeforeMethod(groups = {"regression"})
+    @BeforeMethod(groups = {"regression, smoke"})
     public void setUp(){
 
         if(ConfigReader.isMocked()){
@@ -39,7 +39,7 @@ public class BaseClass {
 
     }
 
-    @AfterMethod(groups = {"regression"})
+    @AfterMethod(groups = {"regression, smoke"})
     public void wireMockTearDown(){
         if (ConfigReader.isMocked())wireMockServer.stop();
     }

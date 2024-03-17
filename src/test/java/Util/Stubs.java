@@ -3,7 +3,7 @@ package Util;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 public class Stubs {
-    public static void configureStubForSuccess(String endpoint, String bodyPath) {
+    public static void configureStubForSuccessWithJsonBody(String endpoint, String bodyPath) {
         stubFor(get(urlEqualTo(endpoint))
                 .willReturn(aResponse()
                         .withStatus(200)
