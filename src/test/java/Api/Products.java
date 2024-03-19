@@ -6,7 +6,7 @@ import Util.BaseClass;
 import Util.ConfigReader;
 import Util.SerializationManager;
 import com.fasterxml.jackson.core.type.TypeReference;
-import io.restassured.RestAssured;
+
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
