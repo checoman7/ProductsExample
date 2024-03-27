@@ -15,5 +15,4 @@ public class SerializationManager {
     public static <T> T deserializeParamObj(String jsonString, TypeReference<T> typeReference) throws Exception {
         return objectMapper.readValue(jsonString, typeReference);
     }
-
 }

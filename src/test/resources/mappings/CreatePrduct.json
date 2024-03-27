@@ -1,0 +1,20 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPath": "/products",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\"title\":\"Test\",\"price\":2.0,\"description\":\"test\",\"image\":\"\",\"category\":\"men\"}",
+        "ignoreExtraElements": true, // This allows the request to contain additional fields
+        "ignoreArrayOrder": true // This is useful if your JSON includes arrays and the order of elements should not affect matching
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "body": "{\n    \"id\": 21,\n    \"title\": \"Test\",\n    \"price\": 2,\n    \"description\": \"test\",\n    \"image\": \"\",\n    \"category\": \"men\"\n}",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

@@ -23,10 +23,11 @@ public class ConfigReader {
     public static String getMockedUrl() {
         return properties.getProperty("mockedURL");
     }
-
     public static Boolean isMocked() {
         return Boolean.parseBoolean(properties.getProperty("isMocked"));
     }
-
+    public static Boolean isStandAlone() {
+        return Boolean.parseBoolean(properties.getProperty("isStandAlone"));
+    }
 
 }
